@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DashX Signup Verification</title>
+    <style>
+      /* Include the rest of the styles from previous template here */
+      .code {
+        background-color: #f0f0f0;
+        padding: 10px;
+        border-left: 5px solid #b847ef;
+        font-weight: bold;
+        margin: 20px 0;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <img
+          src="https://i.postimg.cc/dVzZ2Mdm/photo.jpg"
+          alt="DashX Logo"
+          style="max-width: 200px; height: auto"
+        />
+      </div>
+      <div class="content">
+        <p>Dear <%= name %></p>
+        <p>
+          We're pleased to inform you that your order (<%= trackingid %>, Code:
+          <%= code %>) is currently on its way. You can monitor the progress of
+          your shipment by visiting the following link: [Track Your Order]
+          <a href="https://dashx.altinsmart.com/order-tracker?order=<%= code %>"
+            >ORDER</a
+          >.
+        </p>
+       
+        <h3>Important Payment Information</h3>
+        <p>
+          Please note that payment should be made only when our dispatch arrives
+          with your package.
+        </p>
+        <ol>
+          <li>Recipient Name: <%= accountname %></li>
+          <li>Acc#: <%= accountnumber %></li>
+          <li>Amount: <%= fee %></li>
+          <li>Bank: Wema Bank</li>
+        </ol>
+        <p>
+          Thank you for choosing us. If you have any questions or need further
+          assistance, please don't hesitate to get in touch.
+        </p>
+      </div>
+      <div class="footer">
+        <p>Visit us at: 7B Udeco Medical Road, Chevy View Estate, Lagos</p>
+        <p>&copy; [2024] DashX. All rights reserved.</p>
+      </div>
+    </div>
+  </body>
+</html>
