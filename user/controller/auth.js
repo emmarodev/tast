@@ -189,6 +189,9 @@ const userconfirmforgetpasswordcodeController = async (req, res, next) => {
       status_code: 200,
       status: true,
       message: " successful",
+      data: {
+        resetPasswordOtp : true
+      }
     });
   } catch (error) {
     console.log(error);
