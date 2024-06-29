@@ -7,6 +7,23 @@ const {
   userupdatesociallinkModel,
 } = require("../model/profile");
 
+const userretrieveprofileController = async (req, res, next) => {
+  const {
+    userid,
+  } = req.body;
+  try {
+    const staff = await userModel.findById(userid);
+    return res.status(200).json({
+      status_code: 200,
+      status: true,
+      message: "login process successful",
+      data: staff,
+    });
+  } catch (error) {
+    console.log(error);
+    handleError(error.message)(res);
+  }
+};
 const userupdatepersonaldeatilController = async (req, res, next) => {
   const {
     name,
@@ -155,5 +172,5 @@ module.exports = {
   userupdatepresentaddressController,
   userupdatepersonaldeatilController,
   userupdatesociallinkController,
-  userupdatecompanyinfomationController,
+  userupdatecompanyinfomationController, userretrieveprofileController
 };
