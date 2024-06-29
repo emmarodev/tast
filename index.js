@@ -19,7 +19,7 @@ const io = require("socket.io")(http,  {
 // //for customer
 const userauth = require('./user/route/auth');
 const { coonectdb } = require("./helper/connectdb");
-// const userproduct = require('./user/route/product')
+const userprofile = require('./user/route/profile')
 // const userorder = require('./user/route/order')
 // const usercategory = require('./user/route/category')
 // const customeraddress = require('./customer/route/address')
@@ -72,7 +72,7 @@ const user = '/user'
 const admin = '/admin'
 //for customer
 app.use(user, userauth )
-// app.use(user, userproduct )
+app.use(user, userprofile )
 // app.use(user, userorder )
 // app.use(user, usercategory )
 // app.use(customer, customerprofile)
