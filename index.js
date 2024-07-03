@@ -59,7 +59,9 @@ const userprofile = require('./user/route/profile')
 
 //connecting the database
 coonectdb();
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 //applying our middleware
 
 //applying our middleware
