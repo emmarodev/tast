@@ -10,7 +10,7 @@ const userupdatepersoneldetailsValidation = (req, res, next) => {
     language: joi.array().required(),
     dob: joi.string().required(),
     phone: joi.string().required(),
-    userid: joi.string().required(),
+    userid: joi.string().required().length(24),
     identification: joi.string().required(),
   });
   const { error } = schema.validate(req.body);
@@ -35,7 +35,7 @@ const userupdateaddressValidation = (req, res, next) => {
     country: joi.string().required(),
     city: joi.string().required(),
     postalzone: joi.string().required(),
-    userid: joi.string().required(),
+    userid: joi.string().required().length(24),
   });
   const { error } = schema.validate(req.body);
   if (error) {
@@ -59,7 +59,7 @@ const userupdatecompanyinfoValidation = (req, res, next) => {
     phone: joi.string().required(),
     email: joi.string().required(),
     website_url: joi.string().required(),
-    userid: joi.string().required(),
+    userid: joi.string().required().length(24),
   });
   const { error } = schema.validate(req.body);
   if (error) {
@@ -80,7 +80,7 @@ const userupdatecompanyinfoValidation = (req, res, next) => {
 const userupdatesociallinkValidation = (req, res, next) => {
   const schema = joi.object({
     social_link: joi.array().required(),
-    userid: joi.string().required(),
+    userid: joi.string().required().length(24),
   });
   const { error } = schema.validate(req.body);
   if (error) {
