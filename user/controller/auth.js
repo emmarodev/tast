@@ -5,6 +5,8 @@ const { generateuserauthcode, generateRandomNumber } = require("../core/utils");
 const { userSignupModel, userLoginModel, userUpdatepasswordModel } = require("../model/auth");
 
 const jwt = require("jsonwebtoken");
+
+
 const userSignupController = async (req, res, next) => {
   const { email, password, name } = req.body;
   const userEmail = email.toLowerCase();

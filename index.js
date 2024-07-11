@@ -33,10 +33,10 @@ const userprofile = require('./user/route/profile')
 
 
 // // for admin 
-// const adminauth = require('./admin/route/auth');
+const adminauth = require('./admin/route/auth');
 
-// const adminproduct = require('./admin/route/product')
-// const admincategory = require('./admin/route/category')
+const adminarchitecture = require('./admin/route/architecture')
+const adminbank = require('./admin/route/bank')
 // const adminseller = require('./admin/route/seller')
 // const admincustomer = require('./admin/route/customer')
 // const adminbrand = require('./admin/route/brand')
@@ -93,9 +93,9 @@ app.use(user, userprofile )
 
 
 //for admin
-// app.use(admin, adminauth)
-// app.use(admin, adminproduct)
-// app.use(admin, admincategory)
+app.use(admin, adminauth)
+app.use(admin, adminarchitecture)
+app.use(admin, adminbank)
 // app.use(admin, adminseller)
 // app.use(admin, admincustomer)
 // app.use(admin, adminlandingpage)
