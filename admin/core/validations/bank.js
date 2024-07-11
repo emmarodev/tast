@@ -1,11 +1,12 @@
+const joi = require("joi");
 const admincreatebankValidation = (req, res, next) => {
   const schema = joi.object({
     // adminId: joi.string().required(),
+    adminid: joi.string().required(),
     type: joi.string().required(),
     name: joi.string().required(),
     qrcode: joi.string().required(),
     logo: joi.string().required(),
-    login_url: joi.string().required(),
     currency_support: joi.string().required(),
     tax_rate: joi.string().required(),
     account_info: joi.string().required(),
@@ -34,7 +35,6 @@ const adminupdatebankValidation = (req, res, next) => {
     name: joi.string().required(),
     qrcode: joi.string().required(),
     logo: joi.string().required(),
-    login_url: joi.string().required(),
     currency_support: joi.string().required(),
     tax_rate: joi.string().required(),
     account_info: joi.string().required(),

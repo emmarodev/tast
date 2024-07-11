@@ -11,7 +11,7 @@ router.post("/create/bank",  admincreatebankValidation, admin_check_token, admin
 router.post("/update/bank",  adminupdatebankValidation, admin_check_token,  adminupdatebankController);
 router.post("/delete/bank",  admindeletebankValidation, admin_check_token,  admindeletebankController);
 router.post("/update/bank/status",   adminchnagebankstatusValidation, admin_check_token,  adminchangebankstatusController);
-router.get("/retrieve/bank",  adminValidation, admin_check_token,   adminretrievebankController);
+router.get("/retrieve/bank/:adminid",  adminValidation, admin_check_token,   adminretrievebankController);
 
 
 module.exports = router
