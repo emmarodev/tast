@@ -28,7 +28,7 @@ const userprofile = require('./user/route/profile')
 // const customerwallet = require('./customer/route/wallet')
 // const customerstore = require('./customer/route/store')
 // const customersupport = require('./customer/route/support')
-// const customerblog = require('./customer/route/blog')
+// const customerservice = require('./customer/route/service')
 
 
 
@@ -36,8 +36,23 @@ const userprofile = require('./user/route/profile')
 const adminauth = require('./admin/route/auth');
 
 const adminarchitecture = require('./admin/route/architecture')
+const adminproject = require('./admin/route/project')
+const adminservice = require('./admin/route/service')
+const adminblog = require('./admin/route/blog')
 const adminbank = require('./admin/route/bank')
-// const adminseller = require('./admin/route/seller')
+const adminnotice = require('./admin/route/notice')
+const adminorder = require('./admin/route/order')
+const adminemployee = require('./admin/route/employee')
+
+//setting
+const adminbanner = require('./admin/route/setting/banner')
+//media
+const adminpayment = require('./admin/route/media/payment')
+const adminsegmentphoto = require('./admin/route/media/segmentphoto')
+const adminsupportlogo = require('./admin/route/media/supportlogo')
+const adminsocial = require('./admin/route/media/social');
+const { socialModel } = require("./admin/core/db/media/social");
+// const adminsocial = require('./admin/route/media/segmentphoto')
 // const admincustomer = require('./admin/route/customer')
 // const adminbrand = require('./admin/route/brand')
 // const adminlandingpage = require('./admin/route/landingpage')
@@ -45,7 +60,7 @@ const adminbank = require('./admin/route/bank')
 // const adminprofile = require('./admin/route/profile')
 // const adminsetting = require('./admin/route/setting')
 // const adminoffer = require('./admin/route/offer')
-// const adminblog = require('./admin/route/blog')
+// const adminservice = require('./admin/route/service')
 // const adminsupport = require('./admin/route/support')
 // const adminhr = require('./admin/route/hr')
 
@@ -86,7 +101,7 @@ app.use(user, userprofile )
 // app.use(customer, customerwallet)
 // app.use(customer, customerstore)
 // app.use(customer, customersupport)
-// app.use(customer, customerblog)
+// app.use(customer, customerservice)
 
 
 
@@ -95,7 +110,19 @@ app.use(user, userprofile )
 //for admin
 app.use(admin, adminauth)
 app.use(admin, adminarchitecture)
+app.use(admin, adminproject)
 app.use(admin, adminbank)
+app.use(admin, adminservice)
+app.use(admin, adminblog)
+app.use(admin, adminnotice)
+app.use(admin, adminemployee)
+app.use(admin, adminorder)
+
+//media
+app.use(admin, adminsegmentphoto)
+app.use(admin, adminpayment)
+app.use(admin, adminsocial)
+app.use(admin, adminsupportlogo)
 // app.use(admin, adminseller)
 // app.use(admin, admincustomer)
 // app.use(admin, adminlandingpage)
@@ -104,7 +131,7 @@ app.use(admin, adminbank)
 // app.use(admin, adminprofile)
 // app.use(admin, adminsetting)
 // app.use(admin, adminoffer)
-// app.use(admin, adminblog)
+// app.use(admin, adminservice)
 // app.use(admin, adminsupport)
 // app.use(admin, adminhr)
 

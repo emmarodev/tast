@@ -1,6 +1,7 @@
 const { admincreatearchitectureController, adminupdatearchitectureController, admindeletearchitectureController, adminretrievearchitectureController } = require("../controller/architecture");
 const { admin_check_token } = require("../core/authorization");
 const { admincreatearchitectureValidation, admindeletearchitectureValidation, adminupdatearchitectureValidation } = require("../core/validations/architecture");
+const { adminValidation } = require("../core/validations/auth");
 const router = require("express").Router();
 
 
@@ -23,8 +24,8 @@ router.post(
   admindeletearchitectureController
 );
 router.get(
-  "/retrieve/all/architecture",
-  admindeletearchitectureValidation,
+  "/retrieve/all/architecture/:adminid",
+  adminValidation,
   admin_check_token,
   adminretrievearchitectureController
 );

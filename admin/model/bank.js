@@ -68,7 +68,7 @@ const adminupdatebankModel = async (data, res) => {
 const admindeletebankModel = async (data, res) => {
   try {
     const { bankid } = data;
-    const form = await bankModel.findAndDelete(bankid);
+    const form = await bankModel.findByIdAndDelete(bankid);
 
     return form;
   } catch (error) {

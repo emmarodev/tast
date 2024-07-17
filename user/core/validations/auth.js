@@ -39,6 +39,8 @@ const userLoginValidation = (req, res, next) => {
   return next();
 };
 
+
+
 const userforgotpasswordValidation = (req, res, next) => {
   const schema = joi.object({
     email: joi.string().required().email(),
@@ -118,6 +120,8 @@ const userconfirmcodeValidation = (req, res, next) => {
   }
   return next();
 };
+
+
 const userconfirmforgetpasswordcodeValidation = (req, res, next) => {
   const schema = joi.object({
     code: joi.string().required(),

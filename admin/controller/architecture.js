@@ -75,7 +75,8 @@ const adminretrievearchitectureController = async (req, res, next) => {
     return res.status(200).json({
       status_code: 200,
       status: true,
-      message: "signup process successful",
+        message: "signup process successful",
+      data : trainee
     });
   } catch (error) {
     console.log(error);

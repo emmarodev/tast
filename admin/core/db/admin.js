@@ -37,7 +37,20 @@ const Riderschema = new schema({
     type: Boolean,
     default: false,
   },
-
+  auth: {
+    auth_token: {
+      type: String,
+      default: "",
+    },
+    auth_code: {
+      type: String,
+      default: "",
+    },
+    auth_verified: {
+      type: Boolean,
+      default: false,
+    },
+  },
   createdAt: {
     type: Date,
     default: Date.now,

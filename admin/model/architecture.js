@@ -77,7 +77,7 @@ const adminicrementarchitecturecountModel = async (data, res) => {
 const admindeletearchitectureModel = async (data, res) => {
   try {
     const { architectureid } = data;
-    const form = await architectureModel.findAndDelete(architectureid);
+    const form = await architectureModel.findByIdAndDelete(architectureid);
 
     return form;
   } catch (error) {

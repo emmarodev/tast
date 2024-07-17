@@ -67,6 +67,26 @@ const Riderschema = new schema({
         type: String, default :""
       },
   },
+  finance: {
+    total_order: {
+        type: Number, default :0
+      },
+    total_amount: {
+        type: Number, default :0
+      },
+    total_paid: {
+        type: Number, default :0
+      },
+      money_left: {
+        type: Number, default :0
+      },
+      refund_amount: {
+        type: Number, default :0
+      },
+      profit: {
+        type: Number, default :0
+      },
+  },
   social_link: {
     default: [],
     type: [

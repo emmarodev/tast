@@ -7,6 +7,9 @@ const {
   adminupdatepasswordController,
   retrievealladminsController,
   retrievesingleadminController,
+  adminresetPassword,
+  adminconfirmforgetpasswordcodeController,
+  adminrNewPasswordLink,
 } = require("../controller/auth");
 const { admin_check_token } = require("../core/authorization");
 const {
@@ -17,12 +20,23 @@ const {
   admindeletestaffValidation,
   adminValidation,
   adminchnagestaffstatusValidation,
+  adminconfirmforgetpasswordcodeValidation,
+  adminResetpasswordValidation,
+  adminforgotpasswordValidation,
 } = require("../core/validations/auth");
 
 const router = require("express").Router();
 
 router.post("/create/staff", adminsignupValidation, adminSignupController);
 router.post("/login", adminloginValidation, userLoginController);
+router.post("/forgot/password", adminforgotpasswordValidation, adminrNewPasswordLink);
+router.post(
+  "/confirm/code",
+  adminconfirmforgetpasswordcodeValidation,
+  adminconfirmforgetpasswordcodeController
+);
+router.post("/reset/password", adminResetpasswordValidation, adminresetPassword);
+
 router.post(
   "/update/staff",
   admin_check_token,
