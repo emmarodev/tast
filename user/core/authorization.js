@@ -4,8 +4,8 @@ const { userModel } = require('./db/user');
 
 
 
-const admin_check_token = async (req, res, next) => {
-  let admin = req.body.userid
+const user_check_token = async (req, res, next) => {
+  let admin = req.body.userid  || req.params.userid
   
     const checkuser = await userModel.findById(admin)
   if (!checkuser) {
@@ -61,5 +61,5 @@ const admin_check_token = async (req, res, next) => {
 
 
 module.exports = {
-    admin_check_token 
+    user_check_token 
 }

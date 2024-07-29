@@ -8,9 +8,7 @@ const {
 } = require("../model/profile");
 
 const userretrieveprofileController = async (req, res, next) => {
-  const {
-    userid,
-  } = req.body;
+  const { userid } = req.body;
   try {
     const staff = await userModel.findById(userid);
     return res.status(200).json({
@@ -172,5 +170,6 @@ module.exports = {
   userupdatepresentaddressController,
   userupdatepersonaldeatilController,
   userupdatesociallinkController,
-  userupdatecompanyinfomationController, userretrieveprofileController
+  userupdatecompanyinfomationController,
+  userretrieveprofileController,
 };

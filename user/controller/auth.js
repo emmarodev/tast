@@ -247,6 +247,7 @@ const userNewPasswordLink = async (req, res) => {
   }
 };
 
+
 const userresetPassword = async (req, res, next) => {
     const { email, currentpassword, newpassword } = req.body;
     try {

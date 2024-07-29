@@ -24,6 +24,8 @@ const admincreateorderController = async (req, res, next) => {
     // return handleError(error.message)(res);
   }
 };
+
+
 const adminupdateorderController = async (req, res, next) => {
   const {photo , title , orderid } = req.body;
   try {
