@@ -33,7 +33,7 @@ router.post(
   admindeletefourcardController
 );
 router.get(
-  "/retrieve/fourcard",
+  "/retrieve/fourcard/:adminid",
   adminValidation,
   admin_check_token,
   adminretrievefourcardController

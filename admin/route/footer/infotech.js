@@ -3,14 +3,14 @@ const {
     adminupdateinfotechController,
     admindeleteinfotechController,
     adminretrieveinfotechController,
-  } = require("../controller/footer/infotech");
-  const { admin_check_token } = require("../core/authorization");
-  const { adminValidation } = require("../core/validations/auth");
+  } = require("../../controller/footer/infotech");
+  const { admin_check_token } = require("../../core/authorization");
+  const { adminValidation } = require("../../core/validations/auth");
   const {
     admincreateinfotechValidation,
     admindeleteinfotechValidation,
     adminupdateinfotechValidation,
-  } = require("../core/validations/footer/infotech");
+  } = require("../../core/validations/footer/infotech");
   const router = require("express").Router();
   
   router.post(

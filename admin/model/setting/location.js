@@ -1,12 +1,13 @@
-const { threecardModel } = require("../../core/db/setting/threecards");
+const { locationModel } = require("../../core/db/setting/location");
 
 
-const admincreatethreecardModel = async (data, res) => {
+const admincreatelocationModel = async (data, res) => {
   try {
     const {
+      
         title , image , tag , description
     } = data;
-    const form = await new threecardModel({
+    const form = await new locationModel({
         title , image , tag , description
     });
     const userDetails = await form.save();
@@ -18,13 +19,13 @@ const admincreatethreecardModel = async (data, res) => {
   }
 };
 
-const adminupdatethreecardModel = async (data, res) => {
+const adminupdatelocationModel = async (data, res) => {
   try {
     const {
-        title , image , tag , threecardid , description
+        title , image , tag , locationid , description
     } = data;
 
-    const form = await threecardModel.findByIdAndUpdate(threecardid, {
+    const form = await locationModel.findByIdAndUpdate(locationid, {
         $set: {
             title, image, tag , description
         }
@@ -38,10 +39,10 @@ const adminupdatethreecardModel = async (data, res) => {
   }
 };
 
-const admindeletethreecardModel = async (data, res) => {
+const admindeletelocationModel = async (data, res) => {
   try {
-    const { threecardid } = data;
-    const form = await threecardModel.findByIdAndDelete(threecardid);
+    const { locationid } = data;
+    const form = await locationModel.findByIdAndDelete(locationid);
 
     return form;
   } catch (error) {
@@ -54,7 +55,7 @@ const admindeletethreecardModel = async (data, res) => {
 
 
 module.exports = {
-  admindeletethreecardModel,
-  adminupdatethreecardModel,
-  admincreatethreecardModel,
+  admindeletelocationModel,
+  adminupdatelocationModel,
+  admincreatelocationModel,
 };

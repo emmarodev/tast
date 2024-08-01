@@ -1,6 +1,6 @@
 const { userorderModel } = require("../../../user/core/db/order");
 const { orderstatuslogModel } = require("../../../user/core/db/orderstatuslog");
-
+const { userModel } = require("../../../user/core/db/user");
 
 const adminuserorderdashboardModel = async (data, res) => {
   try {
@@ -74,6 +74,34 @@ const adminupdateuserordersignatoryModel = async (data, res) => {
       },
     });
 
+    return "success";
+  } catch (error) {
+    console.log(error);
+    return error.message;
+    // handleError(error.message)(res)
+  }
+};
+
+const adminsetorderprofitModel = async (data, res) => {
+  try {
+    const { orderid, adminid, profit, pin, userid } = data;
+    //update user profile
+    await userModel.findByIdAndUpdate(userid, {
+      $inc: {
+        finance: {
+          profit,
+        },
+      },
+    });
+
+    //update user profile
+    await userorderModel.findByIdAndUpdate(orderid, {
+      $set: {
+        profit
+      },
+    });
+
+   
     return "success";
   } catch (error) {
     console.log(error);

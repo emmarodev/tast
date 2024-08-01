@@ -33,7 +33,7 @@ const {
     admindeleteservicegalleryController
   );
   router.get(
-    "/retrieve/servicegallery",
+    "/retrieve/servicegallery/:adminid",
     adminValidation,
     admin_check_token,
     adminretrieveservicegalleryController

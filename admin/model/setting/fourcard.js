@@ -4,6 +4,7 @@ const { fourcardModel } = require("../../core/db/setting/fourcard");
 const admincreatefourcardModel = async (data, res) => {
   try {
     const {
+      
         title , image , tag , description
     } = data;
     const form = await new fourcardModel({

@@ -5,7 +5,7 @@ const {
   adminupdateuserpaymentstatusController,
   adminretrievesingleuserpaymentController,
   adminuserpaymentdashboardController,
-} = require("../../controller/user/payment_refund");
+} = require("../../controller/user/payment");
 const { admin_check_token } = require("../../core/authorization");
 const {
   adminretrievedashboardValidation,

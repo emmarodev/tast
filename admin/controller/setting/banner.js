@@ -75,7 +75,7 @@ const admindeletebannerController = async (req, res, next) => {
 const adminretrievebannerController = async (req, res, next) => {
   try {
 
-    let trainee = await bannerModel.findOne();
+    let trainee = await bannerModel.find();
     return res.status(200).json({
       status_code: 200,
       status: true,

@@ -3,14 +3,14 @@ const {
     adminupdatecivilController,
     admindeletecivilController,
     adminretrievecivilController,
-  } = require("../controller/footer/civil");
-  const { admin_check_token } = require("../core/authorization");
-  const { adminValidation } = require("../core/validations/auth");
+  } = require("../../controller/footer/civil");
+  const { admin_check_token } = require("../../core/authorization");
+  const { adminValidation } = require("../../core/validations/auth");
   const {
     admincreatecivilValidation,
     admindeletecivilValidation,
     adminupdatecivilValidation,
-  } = require("../core/validations/footer/civil");
+  } = require("../../core/validations/footer/civil");
   const router = require("express").Router();
   
   router.post(

@@ -1,5 +1,6 @@
 const { refundModel } = require("../../../user/core/db/refund");
 const { refundstatuslogModel } = require("../../../user/core/db/refundstatuslog");
+const { userModel } = require("../../../user/core/db/user");
 
 const adminuserrefunddashboardModel = async (data, res) => {
   try {
@@ -51,7 +52,20 @@ const adminupdateuserrefundstatusModel = async (data, res) => {
       adminid,
     });
 
-    const userDetails = await form.save();
+      const userDetails = await form.save();
+      
+      if (status == 'accepted') {
+          const userid = refund.userid
+          const amount = refund.amount
+          await userModel.findByIdAndUpdate(userid, {
+            $inc: {
+              finance: {
+                refund_amount: amount,
+              },
+            }
+        
+          });
+      }
     return "success";
   } catch (error) {
     console.log(error);

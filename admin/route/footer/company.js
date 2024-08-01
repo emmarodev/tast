@@ -3,14 +3,14 @@ const {
     adminupdatecompanyController,
     admindeletecompanyController,
     adminretrievecompanyController,
-  } = require("../controller/footer/company");
-  const { admin_check_token } = require("../core/authorization");
-  const { adminValidation } = require("../core/validations/auth");
+  } = require("../../controller/footer/company");
+  const { admin_check_token } = require("../../core/authorization");
+  const { adminValidation } = require("../../core/validations/auth");
   const {
     admincreatecompanyValidation,
     admindeletecompanyValidation,
     adminupdatecompanyValidation,
-  } = require("../core/validations/footer/company");
+  } = require("../../core/validations/footer/company");
   const router = require("express").Router();
   
   router.post(

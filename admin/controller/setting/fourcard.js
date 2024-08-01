@@ -79,7 +79,7 @@ const admindeletefourcardController = async (req, res, next) => {
 };
 const adminretrievefourcardController = async (req, res, next) => {
   try {
-    let trainee = await fourcardModel.findOne();
+    let trainee = await fourcardModel.find();
     return res.status(200).json({
       status_code: 200,
       status: true,

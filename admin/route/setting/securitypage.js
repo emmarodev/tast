@@ -33,7 +33,7 @@ const {
     admindeletesecuritypageController
   );
   router.get(
-    "/retrieve/securitypage",
+    "/retrieve/securitypage/:adminid",
     adminValidation,
     admin_check_token,
     adminretrievesecuritypageController

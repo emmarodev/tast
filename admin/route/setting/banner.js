@@ -29,7 +29,7 @@ router.post(
   admindeletebannerController
 );
 router.get(
-  "/retrieve/banner",
+  "/retrieve/banner/:adminid",
   adminValidation,
   admin_check_token,
   adminretrievebannerController

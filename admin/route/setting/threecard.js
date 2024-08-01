@@ -29,7 +29,7 @@ router.post(
   admindeletethreecardController
 );
 router.get(
-  "/retrieve/threecard",
+  "/retrieve/threecard/:adminid",
   adminValidation,
   admin_check_token,
   adminretrievethreecardController

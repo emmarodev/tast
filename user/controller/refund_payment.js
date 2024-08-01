@@ -23,14 +23,14 @@ const usercreatepaymentcontroller = async (req, res, next) => {
     orderid,
   } = req.body;
   try {
-    const order = await userorderModel.findById(orderid);
-    if (order.status != "payment") {
-      return res.status(200).json({
-        status_code: 200,
-        status: true,
-        message: "order not due for payment",
-      });
-    }
+    // const order = await userorderModel.findById(orderid);
+    // if (order.status != "payment") {
+    //   return res.status(200).json({
+    //     status_code: 200,
+    //     status: true,
+    //     message: "order not due for payment",
+    //   });
+    // }
     const data = {
       additional_note,
       transaction_receipt,
@@ -113,14 +113,14 @@ const usercreaterefundcontroller = async (req, res, next) => {
     orderid,
   } = req.body;
   try {
-    const order = await userorderModel.findById(orderid);
-    if (order.status == "working") {
-      return res.status(200).json({
-        status_code: 200,
-        status: true,
-        message: "refund not possible, work in progress",
-      });
-    }
+    // const order = await userorderModel.findById(orderid);
+    // if (order.status == "working") {
+    //   return res.status(200).json({
+    //     status_code: 200,
+    //     status: true,
+    //     message: "refund not possible, work in progress",
+    //   });
+    // }
     const data = {
       bank_name,
       account_name,

@@ -3,7 +3,7 @@ const {
   admincreatecompanyModel,
   adminupdatecompanyModel,
   admindeletecompanyModel,
-} = require("../model/footer/company");
+} = require("../../model/footer/company");
 
 const admincreatecompanyController = async (req, res, next) => {
   const { note } = req.body;

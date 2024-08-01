@@ -71,6 +71,10 @@ const Riderschema = new schema({
     type: Number,
     default: 0,
   },
+  profit: {
+    type: Number,
+    default: 0,
+  },
 
   project_type: {
     type: String,

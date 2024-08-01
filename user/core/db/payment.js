@@ -21,7 +21,7 @@ const Riderschema = new schema({
     type: String,
   },
   amount: {
-    type: String,
+    type: Number,
   },
   bank_wallet: {
     type: String,

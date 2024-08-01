@@ -3,7 +3,7 @@ const {
   admincreateinfotechModel,
   adminupdateinfotechModel,
   admindeleteinfotechModel,
-} = require("../model/footer/infotech");
+} = require("../../model/footer/infotech");
 
 const admincreateinfotechController = async (req, res, next) => {
   const { note } = req.body;

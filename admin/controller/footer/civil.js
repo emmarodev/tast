@@ -3,7 +3,7 @@ const {
   admincreatecivilModel,
   adminupdatecivilModel,
   admindeletecivilModel,
-} = require("../model/footer/civil");
+} = require("../../model/footer/civil");
 
 const admincreatecivilController = async (req, res, next) => {
   const { note } = req.body;

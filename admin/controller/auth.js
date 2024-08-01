@@ -1,5 +1,5 @@
 const { adminModel } = require("../core/db/admin");
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const {
   adminSignupModel,
@@ -116,9 +116,7 @@ const adminupdateprofileController = async (req, res, next) => {
 const userLoginController = async (req, res, next) => {
   const { email, password } = req.body;
   const userEmail = email.toLowerCase();
-    try {
-      
-
+  try {
     const userDetails = await adminModel.findOne({
       email: userEmail,
     });
@@ -401,6 +399,23 @@ const adminupdatepasswordController = async (req, res, next) => {
   }
 };
 
+const admindashboardController = async (req, res, next) => {
+  try {
+    const data = ""
+    let trainee = await adminupdatepasswordModel(data, res);
+    return res.status(200).json({
+      status_code: 200,
+      status: true,
+      message: "signup process successful",
+      data: trainee
+    });
+  } catch (error) {
+    console.log(error);
+    handleError(error.message)(res);
+  }
+};
+
+
 module.exports = {
   userLoginController,
   adminupdateprofileController,
@@ -411,5 +426,6 @@ module.exports = {
   retrievealladminsController,
   retrievesingleadminController,
   adminresetPassword,
-  adminconfirmforgetpasswordcodeController, adminrNewPasswordLink
+  adminconfirmforgetpasswordcodeController,
+  adminrNewPasswordLink,
 };

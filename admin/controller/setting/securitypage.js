@@ -79,7 +79,7 @@ const admindeletesecuritypageController = async (req, res, next) => {
 };
 const adminretrievesecuritypageController = async (req, res, next) => {
   try {
-    let trainee = await securitypageModel.findOne();
+    let trainee = await securitypageModel.find();
     return res.status(200).json({
       status_code: 200,
       status: true,

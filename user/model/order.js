@@ -1,4 +1,5 @@
 const { userorderModel } = require("../core/db/order");
+const { userModel } = require("../core/db/user");
 
 const usercreateorderModel = async (data, res) => {
   try {
@@ -31,8 +32,16 @@ const usercreateorderModel = async (data, res) => {
       budget,
     });
 
-    const userDetails = await form.save();
-
+      const userDetails = await form.save();
+      
+      //update user profile
+      await userModel.findByIdAndUpdate(userid, {
+        $inc: {
+              finance: {
+                total_order : 1 , total_amount : budget
+         }
+        },
+      });
     return userDetails;
   } catch (error) {
     console.log("error", error);

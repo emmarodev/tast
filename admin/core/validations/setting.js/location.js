@@ -1,13 +1,13 @@
 const joi = require("joi");
 
-const admincreatethreecardValidation  = (req, res, next) => {
+const admincreatelocationValidation = (req, res, next) => {
   const schema = joi.object({
     // adminId: joi.string().required(),
     adminid: joi.string().required(),
-    title: joi.string().required(),
-    image: joi.string().required(),
-    tag: joi.string().required(),
-    description: joi.string().required()
+    contact: joi.array().required(),
+    name: joi.string().required(),
+    flag: joi.string().required(),
+    address: joi.string().required(),
   });
   const { error } = schema.validate(req.body);
   if (error) {
@@ -24,15 +24,15 @@ const admincreatethreecardValidation  = (req, res, next) => {
   }
   return next();
 };
-const adminupdatethreecardValidation = (req, res, next) => {
+const adminupdatelocationValidation = (req, res, next) => {
   const schema = joi.object({
     // adminId: joi.string().required(),
     adminid: joi.string().required(),
-    threecardid: joi.string().required(),
-    title: joi.string().required(),
-    image: joi.string().required(),
-    tag: joi.string().required(),
-    description: joi.string().required()
+    locationid: joi.string().required(),
+    contact: joi.array().required(),
+    name: joi.string().required(),
+    flag: joi.string().required(),
+    address: joi.string().required(),
   });
   const { error } = schema.validate(req.body);
   if (error) {
@@ -49,11 +49,11 @@ const adminupdatethreecardValidation = (req, res, next) => {
   }
   return next();
 };
-const admindeletethreecardValidation = (req, res, next) => {
+const admindeletelocationValidation = (req, res, next) => {
   const schema = joi.object({
     // adminId: joi.string().required(),
     adminid: joi.string().required(),
-    threecardid: joi.string().required()
+    locationid: joi.string().required(),
   });
   const { error } = schema.validate(req.body);
   if (error) {
@@ -72,5 +72,7 @@ const admindeletethreecardValidation = (req, res, next) => {
 };
 
 module.exports = {
-    admindeletethreecardValidation , adminupdatethreecardValidation  , admincreatethreecardValidation  
-}
+  admindeletelocationValidation,
+  adminupdatelocationValidation,
+  admincreatelocationValidation,
+};

@@ -1,4 +1,5 @@
-const { threecardModel } = require("../../core/db/setting/threecard");
+// const { threecardModel } = require("../../core/db/setting/threecard");
+const { threecardModel } = require("../../core/db/setting/threecards");
 const {
   adminupdatethreecardModel,
   admindeletethreecardModel,
