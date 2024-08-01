@@ -13,25 +13,25 @@ const { admincreatepaymentValidation ,   admindeletepaymentValidation,
 const router = require("express").Router();
 
 router.post(
-  "/create/payment",
+  "/create/payment/icon",
   admincreatepaymentValidation,
   admin_check_token,
   admincreatepaymentController
 );
 router.post(
-  "/update/payment",
+  "/update/payment/icon",
   adminupdatepaymentValidation,
   admin_check_token,
   adminupdatepaymentController
 );
 router.post(
-  "/delete/payment",
+  "/delete/payment/icon",
   admindeletepaymentValidation,
   admin_check_token,
   admindeletepaymentController
 );
 router.get(
-  "/retrieve/all/payment/:adminid",
+  "/retrieve/all/payment/icon/:adminid",
   adminValidation,
   admin_check_token,
   adminretrievepaymentController

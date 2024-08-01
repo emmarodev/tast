@@ -114,5 +114,5 @@ module.exports = {
   adminupdateuserorderstatusModel,
   adminretrievesingleuserorderModel,
   adminuserorderdashboardModel,
-  adminupdateuserordersignatoryModel,
+  adminupdateuserordersignatoryModel, adminsetorderprofitModel
 };

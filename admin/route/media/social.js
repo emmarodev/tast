@@ -14,25 +14,25 @@ const {
   const router = require("express").Router();
   
   router.post(
-    "/create/social",
+    "/create/social/icon",
     admincreatesocialValidation,
     admin_check_token,
     admincreatesocialController
   );
   router.post(
-    "/update/social",
+    "/update/social/icon",
     adminupdatesocialValidation,
     admin_check_token,
     adminupdatesocialController
   );
   router.post(
-    "/delete/social",
+    "/delete/social/icon",
     admindeletesocialValidation,
     admin_check_token,
     admindeletesocialController
   );
   router.get(
-    "/retrieve/all/social/:adminid",
+    "/retrieve/all/social/icon/:adminid",
     adminValidation,
     admin_check_token,
     adminretrievesocialController

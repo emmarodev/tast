@@ -21,10 +21,10 @@ const admincreatesocialModel = async (data, res) => {
 const adminupdatesocialModel = async (data, res) => {
   try {
     const {
-         photo , photoid , url
+         photo , url , socialid
     } = data;
 
-    const form = await socialModel.findByIdAndUpdate(photoid, {
+    const form = await socialModel.findByIdAndUpdate(socialid, {
       $set: {
         photo , url
       },

@@ -26,11 +26,11 @@ const admincreatepaymentController = async (req, res, next) => {
   }
 };
 const adminupdatepaymentController = async (req, res, next) => {
-  const { photo, paymentid } = req.body;
+  const { photo, paymenticonid } = req.body;
   try {
     const data = {
       photo,
-      paymentid,
+      paymenticonid,
     };
 
     let trainee = await adminupdatepaymentModel(data, res);

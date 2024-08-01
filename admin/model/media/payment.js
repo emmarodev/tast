@@ -23,10 +23,10 @@ const admincreatepaymentModel = async (data, res) => {
 const adminupdatepaymentModel = async (data, res) => {
   try {
     const {
-         photo , photoid 
+         photo , paymenticonid 
     } = data;
 
-    const form = await paymentModel.findByIdAndUpdate(photoid, {
+    const form = await paymentModel.findByIdAndUpdate(paymenticonid, {
       $set: {
         photo 
       },

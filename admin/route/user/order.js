@@ -1,10 +1,11 @@
-const { adminupdateuserorderstatusController, adminupdateuserordersignatoryController, adminuserorderdashboardController, adminretrievesingleuserorderController } = require("../../controller/user/order");
+const { adminupdateuserorderstatusController, adminupdateuserordersignatoryController, adminuserorderdashboardController, adminretrievesingleuserorderController, adminupdateuserorderprofitController } = require("../../controller/user/order");
 const { admin_check_token } = require("../../core/authorization");
 const {
   adminretrievedashboardValidation,
   adminretrievesingleorderValidation,
   adminupdateordersignatureValidation,
   adminupdateorderstatusValidation,
+  adminupdateorderprofitValidation,
 } = require("../../core/validations/dashboard");
 
 const router = require("express").Router();
@@ -27,6 +28,12 @@ router.post(
   adminupdateorderstatusValidation,
   admin_check_token,
   adminupdateuserorderstatusController
+);
+router.post(
+  "/update/order/profit",
+  adminupdateorderprofitValidation,
+  admin_check_token,
+  adminupdateuserorderprofitController
 );
 router.post(
   "/update/order/signatory",

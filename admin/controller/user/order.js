@@ -5,6 +5,7 @@ const {
   adminretrievesingleuserorderModel,
   adminupdateuserorderstatusModel,
   adminupdateuserordersignatoryModel,
+  adminsetorderprofitModel,
 } = require("../../model/user/order");
 
 const adminuserorderdashboardController = async (req, res, next) => {
@@ -78,7 +79,7 @@ const adminupdateuserorderprofitController = async (req, res, next) => {
         message: "wrong admin pin",
       });
     }
-    const order = await userorderModel.findById(orderid)
+    const order = await userorderModel.findById(orderid);
     if (order.profit != 0) {
       return res.status(400).json({
         status_code: 400,
@@ -86,10 +87,10 @@ const adminupdateuserorderprofitController = async (req, res, next) => {
         message: "order profit already set",
       });
     }
-    const userid = order.userid
-    const data = { orderid, adminid, profit, pin , userid };
+    const userid = order.userid;
+    const data = { orderid, adminid, profit, pin, userid };
 
-    let trainee = await adminupdateuserorderprofitModel(data, res);
+    let trainee = await adminsetorderprofitModel(data, res);
     return res.status(200).json({
       status_code: 200,
       status: true,
@@ -124,4 +125,5 @@ module.exports = {
   adminretrievesingleuserorderController,
   adminuserorderdashboardController,
   adminupdateuserordersignatoryController,
+  adminupdateuserorderprofitController,
 };
