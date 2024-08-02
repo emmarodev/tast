@@ -25,7 +25,8 @@ const adminupdatecivilValidation = (req, res, next) => {
   const schema = joi.object({
     // adminId: joi.string().required(),
     adminid: joi.string().required(),
-    noteid: joi.string().required()
+    civilid: joi.string().required(),
+    note: joi.string().required(),
   });
   const { error } = schema.validate(req.body);
   if (error) {

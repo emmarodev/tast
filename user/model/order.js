@@ -26,10 +26,9 @@ const usercreateorderModel = async (data, res) => {
       project_type,
       project_requirement,
       project_files,
-      signature_type,
       project_details,
-      signature,
-      budget,
+      
+      budget, user_signatory : {signature_type , signature}
     });
 
       const userDetails = await form.save();

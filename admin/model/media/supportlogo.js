@@ -3,10 +3,10 @@ const { supportlogoModel } = require("../../core/db/media/supportlogo");
 const admincreatesupportlogoModel = async (data, res) => {
   try {
     const {
-        photo
+        logo
     } = data;
     const form = await new supportlogoModel({
-        photo
+        logo
     });
 
     const userDetails = await form.save();
@@ -21,12 +21,12 @@ const admincreatesupportlogoModel = async (data, res) => {
 const adminupdatesupportlogoModel = async (data, res) => {
   try {
     const {
-         photo , photoid
+         logo , supportlogoid
     } = data;
 
-    const form = await supportlogoModel.findByIdAndUpdate(photoid, {
+    const form = await supportlogoModel.findByIdAndUpdate(supportlogoid, {
       $set: {
-        photo 
+        logo 
       },
     });
 

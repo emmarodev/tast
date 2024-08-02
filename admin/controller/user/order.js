@@ -10,7 +10,19 @@ const {
 
 const adminuserorderdashboardController = async (req, res, next) => {
   try {
-    const data = "";
+    const { status, startdate, enddate, viewperpage } = req.body;
+    var query = { $and: [] };
+
+    if (status != '') {
+      query.$and.push({ user_blocked: status });
+    }
+    if (startdate != "") {
+      query.$and.push({ createdAt: { $gte: startdate } });
+    }
+    if (enddate != "") {
+      query.$and.push({ createdAt: { $lte: enddate } });
+    }
+    const data = { query, viewperpage };
     let trainee = await adminuserorderdashboardModel(data, res);
     return res.status(200).json({
       status_code: 200,

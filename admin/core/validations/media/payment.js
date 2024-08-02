@@ -47,7 +47,7 @@ const admindeletepaymentValidation = (req, res, next) => {
   const schema = joi.object({
     // adminId: joi.string().required(),
     adminid: joi.string().required(),
-    paymentid: joi.string().required(),
+    paymenticonid: joi.string().required(),
   });
   const { error } = schema.validate(req.body);
   if (error) {

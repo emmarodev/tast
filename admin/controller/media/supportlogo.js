@@ -25,10 +25,10 @@ const admincreatesupportlogoController = async (req, res, next) => {
   }
 };
 const adminupdatesupportlogoController = async (req, res, next) => {
-  const {logo , logoid } = req.body;
+  const {logo , supportlogoid } = req.body;
   try {
     const data = {
-     logo , logoid,
+     logo , supportlogoid,
     };
 
     let trainee = await adminupdatesupportlogoModel(data, res);

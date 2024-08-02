@@ -25,7 +25,8 @@ const adminupdatesupportlogoValidation = (req, res, next) => {
   const schema = joi.object({
     // adminId: joi.string().required(),
     adminid: joi.string().required(),
-    logoid: joi.string().required()
+    logo: joi.string().required(),
+    supportlogoid: joi.string().required()
   });
   const { error } = schema.validate(req.body);
   if (error) {

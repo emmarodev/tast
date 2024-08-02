@@ -5,42 +5,50 @@ const {
   adminretrievealluserdashboardController,
   adminretrievesingleuserController,
   admindeleteuseraccountController,
+  adminupdateuserstatusController,
 } = require("../../controller/user/user.mgn");
 const { admin_check_token } = require("../../core/authorization");
 const { adminValidation } = require("../../core/validations/auth");
 const {
   adminuserdashboardValidation,
+  adminretrievedashboardValidation,
+  adminupdateuserstatusValidation,
 } = require("../../core/validations/dashboard");
 
 const router = require("express").Router();
 
-
-  //order dashbaord
-  router.get(
-    "/all/user/dashboard",
-    adminuserdashboardValidation,
-    admin_check_token,
-    adminretrievealluserdashboardController
-  );
-router.get(
+//order dashbaord
+router.post(
+  "/all/user/dashboard",
+  adminretrievedashboardValidation,
+  admin_check_token,
+  adminretrievealluserdashboardController
+);
+router.post(
   "/single/user/dashboard",
   adminuserdashboardValidation,
   admin_check_token,
   adminretrievesingleuserController
 );
-router.get(
+router.post(
+  "/update/user/status",
+  adminupdateuserstatusValidation,
+  admin_check_token,
+  adminupdateuserstatusController
+);
+router.post(
   "/user/order/dashboard",
   adminuserdashboardValidation,
   admin_check_token,
   adminretrievealluserorderdashboardController
 );
-router.get(
+router.post(
   "/user/payment/dashboard",
   adminuserdashboardValidation,
   admin_check_token,
   adminretrievealluserpaymentdashboardController
 );
-router.get(
+router.post(
   "/user/refund/dashboard",
   adminuserdashboardValidation,
   admin_check_token,

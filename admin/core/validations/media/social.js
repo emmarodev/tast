@@ -27,7 +27,7 @@ const adminupdatesocialValidation = (req, res, next) => {
     // adminId: joi.string().required(),
     adminid: joi.string().required(),
     socialid: joi.string().required(),
-    photoid: joi.string().required(),
+    photo: joi.string().required(),
     url: joi.string().required(),
   });
   const { error } = schema.validate(req.body);

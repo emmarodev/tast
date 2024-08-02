@@ -143,9 +143,8 @@ const adminuserdashboardValidation = (req, res, next) => {
     // adminId: joi.string().required(),
     adminid: joi.string().required(),
     userid: joi.string().required(),
-    totaldata: joi.number().required(),
   });
-  const { error } = schema.validate(req.params);
+  const { error } = schema.validate(req.body);
   if (error) {
     let err = error.details[0].message;
     let errlen = err.split(" ");
@@ -160,13 +159,110 @@ const adminuserdashboardValidation = (req, res, next) => {
   }
   return next();
 };
+
 const adminretrievedashboardValidation = (req, res, next) => {
   const schema = joi.object({
-    // adminId: joi.string().required(),
     adminid: joi.string().required(),
-    totaldata: joi.number().required(),
+    viewperpage: joi.number().required(),
+    startdate: joi.string().optional().allow(""),
+    enddate: joi.string().optional().allow(""),
+    status: joi.boolean().optional().allow(null),
   });
-  const { error } = schema.validate(req.params);
+  const { error } = schema.validate(req.body);
+  if (error) {
+    let err = error.details[0].message;
+    let errlen = err.split(" ");
+    console.log("this is length ", errlen.length);
+    return res.status(400).json({
+      status_code: 400,
+      status: false,
+      message: err,
+      data: [],
+      error: err,
+    });
+  }
+  return next();
+};
+const adminorderdashboardValidation = (req, res, next) => {
+  const schema = joi.object({
+    adminid: joi.string().required(),
+    viewperpage: joi.number().required(),
+    startdate: joi.string().optional().allow(""),
+    enddate: joi.string().optional().allow(""),
+    status: joi.string().optional().allow(""),
+  });
+  const { error } = schema.validate(req.body);
+  if (error) {
+    let err = error.details[0].message;
+    let errlen = err.split(" ");
+    console.log("this is length ", errlen.length);
+    return res.status(400).json({
+      status_code: 400,
+      status: false,
+      message: err,
+      data: [],
+      error: err,
+    });
+  }
+  return next();
+};
+const adminpaymentdashboardValidation = (req, res, next) => {
+  const schema = joi.object({
+    adminid: joi.string().required(),
+    viewperpage: joi.number().required(),
+    startdate: joi.string().optional().allow(""),
+    enddate: joi.string().optional().allow(""),
+    status: joi.string().optional().allow(""),
+    payment_method: joi.string().optional().allow(""),
+  });
+  const { error } = schema.validate(req.body);
+  if (error) {
+    let err = error.details[0].message;
+    let errlen = err.split(" ");
+    console.log("this is length ", errlen.length);
+    return res.status(400).json({
+      status_code: 400,
+      status: false,
+      message: err,
+      data: [],
+      error: err,
+    });
+  }
+  return next();
+};
+const adminrefunddashboardValidation = (req, res, next) => {
+  const schema = joi.object({
+    adminid: joi.string().required(),
+    viewperpage: joi.number().required(),
+    startdate: joi.string().optional().allow(""),
+    enddate: joi.string().optional().allow(""),
+    status: joi.string().optional().allow(""),
+    refund_method: joi.string().optional().allow(""),
+    bankid: joi.string().optional().allow(""),
+  });
+  const { error } = schema.validate(req.body);
+  if (error) {
+    let err = error.details[0].message;
+    let errlen = err.split(" ");
+    console.log("this is length ", errlen.length);
+    return res.status(400).json({
+      status_code: 400,
+      status: false,
+      message: err,
+      data: [],
+      error: err,
+    });
+  }
+  return next();
+};
+
+const adminupdateuserstatusValidation = (req, res, next) => {
+  const schema = joi.object({
+    adminid: joi.string().required(),
+    userid: joi.string().required(),
+    status: joi.boolean().required(),
+  });
+  const { error } = schema.validate(req.body);
   if (error) {
     let err = error.details[0].message;
     let errlen = err.split(" ");
@@ -240,5 +336,10 @@ module.exports = {
   adminuserdashboardValidation,
   adminretrievedashboardValidation,
   adminupdaterefundstatusValidation,
-  adminupdatepaymentstatusValidation, adminupdateorderprofitValidation
+  adminupdatepaymentstatusValidation,
+  adminupdateorderprofitValidation,
+  adminupdateuserstatusValidation,
+  adminorderdashboardValidation,
+  adminpaymentdashboardValidation,
+  adminrefunddashboardValidation,
 };

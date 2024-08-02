@@ -43,8 +43,8 @@ const adminupdatepaymentModel = async (data, res) => {
 
 const admindeletepaymentModel = async (data, res) => {
   try {
-    const { paymentid } = data;
-    const form = await paymentModel.findByIdAndDelete(paymentid);
+    const { paymenticonid } = data;
+    const form = await paymentModel.findByIdAndDelete(paymenticonid)
 
     return form;
   } catch (error) {

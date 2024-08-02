@@ -38,5 +38,4 @@ const {
     adminretrievecivilController
   );
   
-  module.exports = router;
-  
+  module.exports = router

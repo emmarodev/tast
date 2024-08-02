@@ -14,6 +14,7 @@ const {
   useremployeeController,
   usersingleblogController,
 } = require("../controller/landingpage");
+const { userfooterlandingpageController } = require("../controller/setting");
 const { usercontactusController, usersubscribeController } = require("../controller/support");
 const {
   userblogviewController,
@@ -68,5 +69,9 @@ router.post(
 
 router.post("/contactus", usercontactusValidation, usercontactusController);
 router.post("/subscribe", usersubscribeValidation, usersubscribeController);
+
+
+router.post("/footer",  userfooterlandingpageController);
+
 
 module.exports = router;

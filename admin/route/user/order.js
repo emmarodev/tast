@@ -6,18 +6,19 @@ const {
   adminupdateordersignatureValidation,
   adminupdateorderstatusValidation,
   adminupdateorderprofitValidation,
+  adminorderdashboardValidation,
 } = require("../../core/validations/dashboard");
 
 const router = require("express").Router();
 
 //payment
-router.get(
+router.post(
   "/order/dashboard",
-  adminretrievedashboardValidation,
+  adminorderdashboardValidation,
   admin_check_token,
   adminuserorderdashboardController
 );
-router.get(
+router.post(
   "/single/order",
   adminretrievesingleorderValidation,
   admin_check_token,

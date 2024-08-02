@@ -48,10 +48,10 @@ const adminupdatepaymentController = async (req, res, next) => {
 
 const admindeletepaymentController = async (req, res, next) => {
   try {
-    const { paymentid } = req.body;
+    const { paymenticonid } = req.body;
 
     const data = {
-      paymentid,
+      paymenticonid,
     };
     let trainee = await admindeletepaymentModel(data, res);
     return res.status(200).json({

@@ -7,8 +7,43 @@ const { userModel } = require("../../../user/core/db/user");
 
 const adminuserpaymentdashboardModel = async (data, res) => {
   try {
-    const totalpayment = await paymentModel.find();
-    const dashboard = { totalpayment };
+    const { viewperpage, query } = data;
+
+    let userpayments;
+    let sumuserpayments = await paymentModel.find();
+
+    if (query.$and.length >= 1) {
+      console.log("good");
+      userpayments = await paymentModel.find(query).limit(viewperpage);
+    } else {
+      userpayments = await paymentModel.find().limit(viewperpage);
+    }
+
+    const spamorders = await paymentModel.find({
+      status: "spam",
+    });
+    const totalspamordersamount = spamorders.reduce((accumulator, current) => {
+      return accumulator + current.amount;
+    }, 0);
+    const totalpayment = await paymentModel.countDocuments();
+
+    const totalpendingpayment = await paymentModel.countDocuments({
+      status: "pending",
+    });
+    const totalacceptedpayment = await paymentModel.countDocuments({
+      status: "accepted",
+    });
+    const totalspampayment = await paymentModel.countDocuments({
+      status: "spam",
+    });
+    const dashboard = {
+      totalpayment,
+      userpayments,
+      totalspamordersamount,
+      totalspampayment,
+      totalacceptedpayment,
+      totalpendingpayment,
+    };
 
     return dashboard;
   } catch (error) {
@@ -22,7 +57,7 @@ const adminretrievesinglepaymentModel = async (data, res) => {
   try {
     const { paymentid } = data;
     const payment = await paymentModel.findById(paymentid);
-    const statuslog = await paymentstatuslogModel.find(paymentid);
+    const statuslog = await paymentstatuslogModel.find({ paymentid });
     const paymentdata = { payment, statuslog };
 
     return paymentdata;
@@ -48,7 +83,7 @@ const adminupdateuserpaymentstatusModel = async (data, res) => {
 
     //create payment status log
     const userpaymentid = payment._id;
-    await new paymentstatuslogModel({
+  const form =  await new paymentstatuslogModel({
       to,
       from,
       paymentid: userpaymentid,
@@ -59,8 +94,8 @@ const adminupdateuserpaymentstatusModel = async (data, res) => {
 
     //update order and user
     if (status == "accepted") {
-      const userid = payment.userid
-      const orderid = payment.orderid
+      const userid = payment.userid;
+      const orderid = payment.orderid;
       const user = await userModel.findById(userid);
 
       const amount = payment.amount;
@@ -70,30 +105,24 @@ const adminupdateuserpaymentstatusModel = async (data, res) => {
       //update user profile
       await userModel.findByIdAndUpdate(userid, {
         $inc: {
-          finance: {
-            total_paid: amount,
-          },
+          "finance.total_paid": amount,
         },
         $set: {
-          finance: {
-            money_left: totalbalance,
-          },
+          "finance.money_left": totalbalance,
         },
       });
 
-
-
       //update order
-      const order = await userorderModel.findById(orderid)
-      const totalorderpayment = order.paid_amount + amount
-      const budget = order.budget
-      const orderbalance = budget - totalorderpayment
+      const order = await userorderModel.findById(orderid);
+      const totalorderpayment = order.paid_amount + amount;
+      const budget = order.budget;
+      const orderbalance = budget - totalorderpayment;
       await userorderModel.findByIdAndUpdate(orderid, {
         $inc: {
           paid_amount: amount,
         },
         $set: {
-          balance_amount : orderbalance
+          balance_amount: orderbalance,
         },
       });
     }

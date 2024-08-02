@@ -12,7 +12,23 @@ const {
 
 const adminuserpaymentdashboardController = async (req, res, next) => {
   try {
-    const data = "";
+    const { status, startdate, enddate, viewperpage, payment_method } =
+      req.body;
+    var query = { $and: [] };
+
+    if (status != "") {
+      query.$and.push({ status: status });
+    }
+    if (payment_method != "") {
+      query.$and.push({ bank_wallet: payment_method });
+    }
+    if (startdate != "") {
+      query.$and.push({ createdAt: { $gte: startdate } });
+    }
+    if (enddate != "") {
+      query.$and.push({ createdAt: { $lte: enddate } });
+    }
+    const data = { query, viewperpage };
     let trainee = await adminuserpaymentdashboardModel(data, res);
     return res.status(200).json({
       status_code: 200,
@@ -27,8 +43,8 @@ const adminuserpaymentdashboardController = async (req, res, next) => {
 };
 const adminretrievesingleuserpaymentController = async (req, res, next) => {
   try {
-    const { paymentid,  } = req.body;
-    const data = { paymentid, adminid, status };
+    const { paymentid } = req.body;
+    const data = { paymentid };
 
     let trainee = await adminretrievesinglepaymentModel(data, res);
     return res.status(200).json({
@@ -71,7 +87,26 @@ const adminupdateuserpaymentstatusController = async (req, res, next) => {
 };
 const adminuserrefunddashboardController = async (req, res, next) => {
   try {
-    const data = "";
+    const { status, startdate, enddate, viewperpage, refund_method , bankid } =
+      req.body;
+    var query = { $and: [] };
+
+    if (status != "") {
+      query.$and.push({ status: status });
+    }
+    if (refund_method != "") {
+      query.$and.push({ bank_wallet: refund_method });
+    }
+    if (bankid != "") {
+      query.$and.push({ bankid: bankid });
+    }
+    if (startdate != "") {
+      query.$and.push({ createdAt: { $gte: startdate } });
+    }
+    if (enddate != "") {
+      query.$and.push({ createdAt: { $lte: enddate } });
+    }
+    const data = { query, viewperpage };
     let trainee = await adminuserrefunddashboardModel(data, res);
     return res.status(200).json({
       status_code: 200,
@@ -86,8 +121,8 @@ const adminuserrefunddashboardController = async (req, res, next) => {
 };
 const adminretrievesingleuserrefundController = async (req, res, next) => {
   try {
-    const { refundid,  } = req.body;
-    const data = { refundid, adminid, status };
+    const { refundid } = req.body;
+    const data = { refundid };
 
     let trainee = await adminretrievesinglerefundModel(data, res);
     return res.status(200).json({

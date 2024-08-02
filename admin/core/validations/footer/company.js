@@ -25,7 +25,8 @@ const adminupdatecompanyValidation = (req, res, next) => {
   const schema = joi.object({
     // adminId: joi.string().required(),
     adminid: joi.string().required(),
-    noteid: joi.string().required()
+    companyid: joi.string().required(),
+    note: joi.string().required(),
   });
   const { error } = schema.validate(req.body);
   if (error) {

@@ -13,38 +13,40 @@ const {
   adminretrievesinglerefundValidation,
   adminupdaterefundstatusValidation,
   adminupdatepaymentstatusValidation,
+  adminpaymentdashboardValidation,
+  adminrefunddashboardValidation,
 } = require("../../core/validations/dashboard");
 
 const router = require("express").Router();
 
 //payment
-router.get(
+router.post(
   "/payment/dashboard",
-  adminretrievedashboardValidation,
+  adminpaymentdashboardValidation,
   admin_check_token,
   adminuserpaymentdashboardController
 );
-router.get(
+router.post(
   "/single/payment",
   adminretrievesinglepaymentValidation,
   admin_check_token,
   adminretrievesingleuserpaymentController
 );
 router.post(
-  "/update/single/status",
+  "/update/payment/status",
   adminupdatepaymentstatusValidation,
   admin_check_token,
   adminupdateuserpaymentstatusController
 );
 
 //refund
-router.get(
+router.post(
   "/refund/dashboard",
-  adminretrievedashboardValidation,
+  adminrefunddashboardValidation,
   admin_check_token,
   adminuserrefunddashboardController
 );
-router.get(
+router.post(
   "/single/refund",
   adminretrievesinglerefundValidation,
   admin_check_token,

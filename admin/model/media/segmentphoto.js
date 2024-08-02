@@ -3,10 +3,10 @@ const { segmentphotoModel } = require("../../core/db/media/segmentphoto");
 const admincreatesegmentphotoModel = async (data, res) => {
   try {
     const {
-        photo
+      segmentphoto
     } = data;
     const form = await new segmentphotoModel({
-        photo
+        photo : segmentphoto
     });
 
     const userDetails = await form.save();
@@ -21,12 +21,12 @@ const admincreatesegmentphotoModel = async (data, res) => {
 const adminupdatesegmentphotoModel = async (data, res) => {
   try {
     const {
-         photo , photoid
+         segmentphoto , segmentphotoid
     } = data;
 
-    const form = await segmentphotoModel.findByIdAndUpdate(photoid, {
+    const form = await segmentphotoModel.findByIdAndUpdate(segmentphotoid, {
       $set: {
-        photo 
+        photo  : segmentphoto
       },
     });
 

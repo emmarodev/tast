@@ -5,10 +5,10 @@ const { admincreatesegmentphotoModel ,    adminupdatesegmentphotoModel,
     admindeletesegmentphotoModel, } = require("../../model/media/segmentphoto");
 
 const admincreatesegmentphotoController = async (req, res, next) => {
-  const { logo } = req.body;
+  const { segmentphoto } = req.body;
   try {
     const data = {
-    logo
+    segmentphoto
     };
 
     let trainee = await admincreatesegmentphotoModel(data, res);
@@ -24,10 +24,10 @@ const admincreatesegmentphotoController = async (req, res, next) => {
   }
 };
 const adminupdatesegmentphotoController = async (req, res, next) => {
-  const {logo , logoid } = req.body;
+  const {photo , segmentphotoid } = req.body;
   try {
     const data = {
-     logo , logoid,
+     photo , segmentphotoid,
     };
 
     let trainee = await adminupdatesegmentphotoModel(data, res);
