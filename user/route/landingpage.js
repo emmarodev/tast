@@ -71,7 +71,7 @@ router.post("/contactus", usercontactusValidation, usercontactusController);
 router.post("/subscribe", usersubscribeValidation, usersubscribeController);
 
 
-router.post("/footer",  userfooterlandingpageController);
+router.get("/footer",  userfooterlandingpageController);
 
 
 module.exports = router;

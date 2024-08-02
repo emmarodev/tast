@@ -60,7 +60,10 @@ const adminretrievesinglerefundModel = async (data, res) => {
   try {
     const { refundid } = data;
     const refund = await refundModel.findById(refundid);
-    const statuslog = await refundstatuslogModel.find({ refundid });
+    const statuslog = await refundstatuslogModel
+      .find({ refundid })
+      .find({ orderid })
+      .populate({ path: "adminid", select: "name" });
     const refunddata = { refund, statuslog };
 
     return refunddata;

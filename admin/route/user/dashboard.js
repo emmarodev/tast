@@ -1,3 +1,4 @@
+const { adminmonthlypatrackController } = require("../../controller/dashboard");
 const {
   adminretrievealluserorderdashboardController,
   adminretrievealluserpaymentdashboardController,
@@ -13,6 +14,7 @@ const {
   adminuserdashboardValidation,
   adminretrievedashboardValidation,
   adminupdateuserstatusValidation,
+  adminmonthlypaytrackValidation,
 } = require("../../core/validations/dashboard");
 
 const router = require("express").Router();
@@ -59,6 +61,14 @@ router.delete(
   adminuserdashboardValidation,
   admin_check_token,
   admindeleteuseraccountController
+);
+
+
+router.post(
+  "/monthly/paytrack",
+  adminmonthlypaytrackValidation,
+  admin_check_token,
+  adminmonthlypatrackController
 );
 
 module.exports = router;

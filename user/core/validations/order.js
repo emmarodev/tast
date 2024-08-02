@@ -39,6 +39,7 @@ const usercreaterefundValidation = (req, res, next) => {
     userid: joi.string().required(),
     bank_name: joi.string().required(),
     account_name: joi.string().required(),
+    currency: joi.string().required(),
     account_number: joi.string().required(),
     routing_number: joi.string().required(),
     code: joi.string().required(),

@@ -13,7 +13,7 @@ const adminuserorderdashboardModel = async (data, res) => {
     } else {
       userorders = await userorderModel.find().limit(viewperpage);
     }
-   const  sumuserorders = await userorderModel.find().limit()
+    const sumuserorders = await userorderModel.find().limit();
     const totalorders = await userorderModel.countDocuments();
     const totalamount = sumuserorders.reduce((accumulator, current) => {
       return accumulator + current.amount;
@@ -73,7 +73,9 @@ const adminretrievesingleuserorderModel = async (data, res) => {
   try {
     const { orderid } = data;
     const order = await userorderModel.findById(orderid);
-    const statuslog = await orderstatuslogModel.find({ orderid });
+    const statuslog = await orderstatuslogModel
+      .find({ orderid })
+      .populate({ path: "adminid", select: "name" });
     const orderdata = { order, statuslog };
 
     return orderdata;
@@ -99,7 +101,7 @@ const adminupdateuserorderstatusModel = async (data, res) => {
 
     //create order status log
     const userorderid = order._id;
-  const form =  await new orderstatuslogModel({
+    const form = await new orderstatuslogModel({
       to,
       from,
       orderid: userorderid,
@@ -141,7 +143,7 @@ const adminsetorderprofitModel = async (data, res) => {
     //update user profile
     await userModel.findByIdAndUpdate(userid, {
       $inc: {
-        'finance.profit' : profit
+        "finance.profit": profit,
       },
     });
 

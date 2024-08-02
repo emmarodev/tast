@@ -255,6 +255,30 @@ const adminrefunddashboardValidation = (req, res, next) => {
   }
   return next();
 };
+const adminmonthlypaytrackValidation = (req, res, next) => {
+  const schema = joi.object({
+    adminid: joi.string().required(),
+    viewperpage: joi.number().required(),
+    startdate: joi.string().optional().allow(""),
+    enddate: joi.string().optional().allow(""),
+    status: joi.string().optional().allow(""),
+    bankid: joi.string().optional().allow(""),
+  });
+  const { error } = schema.validate(req.body);
+  if (error) {
+    let err = error.details[0].message;
+    let errlen = err.split(" ");
+    console.log("this is length ", errlen.length);
+    return res.status(400).json({
+      status_code: 400,
+      status: false,
+      message: err,
+      data: [],
+      error: err,
+    });
+  }
+  return next();
+};
 
 const adminupdateuserstatusValidation = (req, res, next) => {
   const schema = joi.object({
@@ -342,4 +366,5 @@ module.exports = {
   adminorderdashboardValidation,
   adminpaymentdashboardValidation,
   adminrefunddashboardValidation,
+  adminmonthlypaytrackValidation,
 };

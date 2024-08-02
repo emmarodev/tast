@@ -57,7 +57,8 @@ const adminretrievesinglepaymentModel = async (data, res) => {
   try {
     const { paymentid } = data;
     const payment = await paymentModel.findById(paymentid);
-    const statuslog = await paymentstatuslogModel.find({ paymentid });
+    const statuslog = await paymentstatuslogModel.find({ paymentid }).find({ orderid })
+    .populate({ path: "adminid", select: "name" });
     const paymentdata = { payment, statuslog };
 
     return paymentdata;

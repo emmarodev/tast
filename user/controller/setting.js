@@ -7,9 +7,9 @@ const { infotechfooterModel } = require("../../admin/core/db/footer/infotech");
 const userfooterlandingpageController = async (req, res, next) => {
     const { userid } = req.body;
     try {
-      const company = await companyfooterModel().sort({createdAt : -1})
-      const civil = await civilfooterModel().sort({createdAt : -1})
-      const infotech = await infotechfooterModel().sort({createdAt : -1})
+      const company = await companyfooterModel.find().sort({createdAt : -1})
+      const civil = await civilfooterModel.find().sort({createdAt : -1})
+      const infotech = await infotechfooterModel.find().sort({createdAt : -1})
   
       let footerdata = {company , civil , infotech}
   

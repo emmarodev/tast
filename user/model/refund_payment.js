@@ -1,3 +1,4 @@
+const { bankModel } = require("../../admin/core/db/bank");
 const { paymentModel } = require("../core/db/payment");
 const { refundModel } = require("../core/db/refund");
 
@@ -15,7 +16,8 @@ const usercreatepaymentModel = async (data, res) => {
       amount,
       userid,
       orderid,
-    } = data;
+      } = data;
+    
     const form = await new paymentModel({
       additional_note,
       transaction_receipt,
@@ -27,7 +29,7 @@ const usercreatepaymentModel = async (data, res) => {
       bank_wallet,
       amount,
       userid,
-      orderid,
+      orderid, currency
     });
 
     const userDetails = await form.save();
@@ -66,14 +68,14 @@ const usercreaterefundModel = async (data, res) => {
       amount,
       bank_wallet,
       userid,
-      orderid,
+      orderid, currency
     } = data;
     const form = await new refundModel({
       bank_name,
       account_name,
       account_number,
       routing_number,
-      code,
+      code, currency,
       transaction_receipt,
       reason,
       additional_note,

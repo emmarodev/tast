@@ -110,7 +110,7 @@ const usercreaterefundcontroller = async (req, res, next) => {
     amount,
     bank_wallet,
     userid,
-    orderid,
+    orderid, currency
   } = req.body;
   try {
     // const order = await userorderModel.findById(orderid);
@@ -133,7 +133,7 @@ const usercreaterefundcontroller = async (req, res, next) => {
       amount,
       bank_wallet,
       userid,
-      orderid,
+      orderid, currency
     };
 
     let trainee = await usercreaterefundModel(data, res);

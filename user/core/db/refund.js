@@ -31,7 +31,10 @@ const Riderschema = new schema({
   },
  bank_wallet: {
     type: String,
-  },
+    },
+    currency: {
+        type: String,
+      },
   status: {
       type: String,
       default :"pending"
