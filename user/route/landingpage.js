@@ -15,12 +15,17 @@ const {
   usersingleblogController,
 } = require("../controller/landingpage");
 const { userfooterlandingpageController } = require("../controller/setting");
-const { usercontactusController, usersubscribeController } = require("../controller/support");
+const {
+  usercontactusController,
+  usersubscribeController,
+} = require("../controller/support");
 const {
   userblogviewController,
   userprojectviewController,
   userarchitectureviewController,
+  usersearchorderController,
 } = require("../controller/view_share");
+const { usersearchorderValidation } = require("../core/validations/order");
 const {
   userarchitectureviewValidation,
   userblogviewValidation,
@@ -43,6 +48,11 @@ router.get("/project", userprojectController);
 router.get("/service", userservicesController);
 router.get("/single/service/:serviceid", usersingleserviceController);
 router.get("/order", userorderController);
+router.post(
+  "/search/order",
+  usersearchorderValidation,
+  usersearchorderController
+);
 router.get("/single/order/:orderid", usersingleorderController);
 router.get("/blog", userblogController);
 router.get("/single/blog/:blogid", usersingleblogController);
@@ -70,8 +80,6 @@ router.post(
 router.post("/contactus", usercontactusValidation, usercontactusController);
 router.post("/subscribe", usersubscribeValidation, usersubscribeController);
 
-
-router.get("/footer",  userfooterlandingpageController);
-
+router.get("/footer", userfooterlandingpageController);
 
 module.exports = router;

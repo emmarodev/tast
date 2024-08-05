@@ -8,8 +8,9 @@ const {
 const admincreateorderController = async (req, res, next) => {
   const { photo , title } = req.body;
   try {
+    const ordertitle = title.toLowerCase();
     const data = {
-    photo , title
+    photo , ordertitle
     };
 
     let trainee = await admincreateorderModel(data, res);

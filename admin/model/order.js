@@ -2,11 +2,10 @@ const { orderModel } = require("../core/db/order");
 
 const admincreateorderModel = async (data, res) => {
   try {
-    const {
-        photo , title
-    } = data;
+    const { photo, ordertitle } = data;
     const form = await new orderModel({
-        photo , title
+      photo,
+      title: ordertitle,
     });
 
     const userDetails = await form.save();
@@ -20,13 +19,12 @@ const admincreateorderModel = async (data, res) => {
 
 const adminupdateorderModel = async (data, res) => {
   try {
-    const {
-         photo , orderid , title
-    } = data;
+    const { photo, orderid, title } = data;
 
     const form = await orderModel.findByIdAndUpdate(orderid, {
       $set: {
-        photo , title
+        photo,
+        title,
       },
     });
 
@@ -37,7 +35,6 @@ const adminupdateorderModel = async (data, res) => {
     // handleError(error.message)(res)
   }
 };
-
 
 const admindeleteorderModel = async (data, res) => {
   try {
@@ -54,6 +51,6 @@ const admindeleteorderModel = async (data, res) => {
 
 module.exports = {
   admindeleteorderModel,
-  admincreateorderModel, adminupdateorderModel
-  
+  admincreateorderModel,
+  adminupdateorderModel,
 };
