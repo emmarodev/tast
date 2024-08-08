@@ -59,11 +59,11 @@ const usercreatepaymentcontroller = async (req, res, next) => {
 };
 
 const userpaymentdashboardController = async (req, res, next) => {
-  const { userid, totaldata } = req.params;
+  const { userid, } = req.params;
   try {
     const data = {
-      userid,
-      totaldata,
+      userid
+    
     };
 
     let trainee = await userpaymentdashboardModel(data, res);
@@ -150,11 +150,10 @@ const usercreaterefundcontroller = async (req, res, next) => {
 };
 
 const userrefunddashboardController = async (req, res, next) => {
-  const { userid, totaldata } = req.params;
+  const { userid } = req.params;
   try {
     const data = {
       userid,
-      totaldata,
     };
 
     let trainee = await userrefunddashboardModel(data, res);

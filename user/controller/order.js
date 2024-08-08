@@ -49,7 +49,7 @@ const usercreateordercontroller = async (req, res, next) => {
 };
 
 const userorderdashboardController = async (req, res, next) => {
-  const { userid } = req.body;
+  const { userid } = req.params;
   try {
     const data = {
       userid,
