@@ -1,3 +1,4 @@
+const { adminretrievebankController } = require("../../admin/controller/bank");
 const {
   usercreateordercontroller,
   userorderdashboardController,
@@ -12,6 +13,7 @@ const {
   userretrievesinglepaymentController,
 } = require("../controller/refund_payment");
 const { user_check_token } = require("../core/authorization");
+const { userValidation } = require("../core/validations/auth");
 const {
     userorderdashboardValidation,
     usercreateorderValidation,
@@ -76,6 +78,12 @@ router.post(
   usercreatepaymentValidation,
   user_check_token,
   usercreatepaymentcontroller
+);
+router.post(
+  "/retrieve/bank",
+  userValidation,
+  user_check_token,
+  adminretrievebankController
 );
 router.get(
   "/retrieve/single/payment/:userid/:paymentid",
