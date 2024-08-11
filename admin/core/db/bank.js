@@ -19,10 +19,10 @@ const Riderschema = new schema({
     type: String,
   },
   tax_rate: {
-    type: Array, 
+    type: String, 
   },
   account_info: {
-    type: Array, 
+    type: String, 
   },
   bank_active: {
     type: Boolean, default : true 
