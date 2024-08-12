@@ -26,9 +26,9 @@ const usercreatepaymentcontroller = async (req, res, next) => {
   try {
     const bank = await bankModel.findById(bankid);
     if (!bank) {
-      return res.status(200).json({
-        status_code: 200,
-        status: true,
+      return res.status(400).json({
+        status_code: 400,
+        status: false,
         message: "bank dont exist",
       });
     }
