@@ -1,3 +1,4 @@
+const { bankModel } = require("../../admin/core/db/bank");
 const { userorderModel } = require("../core/db/order");
 const { paymentModel } = require("../core/db/payment");
 const { refundModel } = require("../core/db/refund");
@@ -23,14 +24,14 @@ const usercreatepaymentcontroller = async (req, res, next) => {
     orderid,
   } = req.body;
   try {
-    // const order = await userorderModel.findById(orderid);
-    // if (order.status != "payment") {
-    //   return res.status(200).json({
-    //     status_code: 200,
-    //     status: true,
-    //     message: "order not due for payment",
-    //   });
-    // }
+    const bank = await bankModel.findById(bankid);
+    if (!bank) {
+      return res.status(200).json({
+        status_code: 200,
+        status: true,
+        message: "bank dont exist",
+      });
+    }
     const data = {
       additional_note,
       transaction_receipt,
