@@ -70,7 +70,7 @@ const userpaymentdashboardModel = async (data, res) => {
     });
 
     const dashboard = {
-      totalpaidamount
+      totalpaidamount,
       totalspampayment,
       totalacceptedpoayment,
       totalpendingpayment,
@@ -141,6 +141,14 @@ const userrefunddashboardModel = async (data, res) => {
       status: "pending",
       userid,
     });
+    const totalsendingrefund = await refundModel.countDocuments({
+      status: "sending",
+      userid,
+    });
+    const totalineliblerefund = await refundModel.countDocuments({
+      status: "inelible",
+      userid,
+    });
     const totalacceptedpoayment = await refundModel.countDocuments({
       status: "accepted",
       userid,
@@ -157,6 +165,7 @@ const userrefunddashboardModel = async (data, res) => {
       totalrefunds,
       userrefunds,
       totalpaidamount,
+      totalineliblerefund , totalsendingrefund
     };
 
     return dashboard;
