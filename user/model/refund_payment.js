@@ -70,6 +70,7 @@ const userpaymentdashboardModel = async (data, res) => {
     });
 
     const dashboard = {
+      totalpaidamount
       totalspampayment,
       totalacceptedpoayment,
       totalpendingpayment,
