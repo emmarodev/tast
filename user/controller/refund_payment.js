@@ -24,6 +24,7 @@ const usercreatepaymentcontroller = async (req, res, next) => {
     orderid,
   } = req.body;
   try {
+    console.log('bank id oay ', bankid)
     const bank = await bankModel.findById(bankid);
     if (!bank) {
       return res.status(400).json({

@@ -18,6 +18,7 @@ const usercreatepaymentModel = async (data, res) => {
       orderid,
     } = data;
     const bank = await bankModel.findById(bankid)
+    console.log('this is bank' , bank)
     const currency = bank.currency_support
     const form = await new paymentModel({
       additional_note,
